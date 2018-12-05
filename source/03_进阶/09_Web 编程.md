@@ -44,7 +44,7 @@
     </Directory>
 ```
 
-在这里，我们假定你有 Web 服务器，启动并运行成功, 并且你可以运行任何其他语言（比如 Perl 或 Shell 等）所写的 CGI 程序。
+在这里，我们假定你有 Web 服务器，启动并运行成功，并且你可以运行任何其他语言（比如 Perl 或 Shell 等）所写的 CGI 程序。
 
 ## 第一个 CGI 程序
 
@@ -595,7 +595,7 @@ Cookies 是一个记录了5可变长度字段的纯文本数据：
     }
 ```
 
-从这个例子中,你一定要了解如何设置 cookie。 我们使用 HTTP 报头的 **Set-Cookie** 字段设置 cookie。
+从这个例子中，你一定要了解如何设置 cookie。 我们使用 HTTP 报头的 **Set-Cookie** 字段设置 cookie。
 
 cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得注意的是，cookies 设置在魔力代码行 **Content-type:text/html\r\n\r\n** 之前。
 
