@@ -27,7 +27,7 @@
 
 ## Web 服务器配置
 
-在你进行 CGI 编程之前确保您的 Web 服务器支持 CGI，并且它被配置为能够处理 CGI 程序。 HTTP 服务器执行的所有 CGI 程序被保存在一个预先配置的目录里。这个目录称为 CGI 目录，一般其命名为 /var/www/cgi-bin。尽管 CGI 文件是 C++ 可执行的，但是按照惯例他们会有扩展名 **.cgi**。
+在你进行 CGI 编程之前确保您的 Web 服务器支持 CGI，并且它被配置为能够处理 CGI 程序。 HTTP 服务器执行的所有 CGI 程序被保存在一个预先配置的目录里。这个目录称为 CGI 目录，一般其命名为 /var/www/cgi-bin。尽管 CGI 文件是 C++ 可执行的，但是按照惯例他们会有扩展名 `.cgi`。
 
 默认情况下，Apache Web 服务器配置为在`/var/www/cgi-bin`运行 CGI 程序。如果你想指定其他目录运行 CGI 脚本，你可以在 httpd.conf 配置文件中修改下面部分的内容:
 
@@ -71,15 +71,17 @@
     }
 ```
 
-编译上面的代码，并命名可执行文件为 cplusplus.cgi。该文件被保存在`/var/WWW/cgi-bin`目录里，并且它有上面的内容。在运行 CGI 程序之前，请确保你已使用 **chmod755 cplusplus.cgi** UNIX 命令来改变文件的权限，使文件能够可执行。现在，如果你点击 [cplusplus.cgi](http://www.tutorialspoint.com/cgi-bin/cplusplus.cgi) ，那么这将产生以下的输出：
+编译上面的代码，并命名可执行文件为 cplusplus.cgi。该文件被保存在`/var/WWW/cgi-bin`目录里，并且它有上面的内容。在运行 CGI 程序之前，请确保你已使用 `chmod755 cplusplus.cgi` UNIX 命令来改变文件的权限，使文件能够可执行。现在，如果你点击 [cplusplus.cgi](http://www.tutorialspoint.com/cgi-bin/cplusplus.cgi) ，那么这将产生以下的输出：
 
-**Hello World! This is my first CGI program**
+```
+Hello World! This is my first CGI program
+```
 
-以上的 C++ 程序是一个简单的将输出写入 STDOUT 文件（即屏幕）的程序。它有一个可用的重要和额外的功能是，第一行要输出 **Content-type:text/html\r\n\r\n**。这一行被发送回浏览器，并指定在浏览器屏幕上显示出来的内容类型。 现在，你理解了 CGI 的基本概念，然后你就可以使用 Python 写许多复杂的 CGI 程序。一个 C++ 的 CGI 程序可以与任何其他外部系统（例如：RDBMS）交互，从而来进行信息的交换。
+以上的 C++ 程序是一个简单的将输出写入 STDOUT 文件（即屏幕）的程序。它有一个可用的重要和额外的功能是，第一行要输出 `Content-type:text/html\r\n\r\n`。这一行被发送回浏览器，并指定在浏览器屏幕上显示出来的内容类型。 现在，你理解了 CGI 的基本概念，然后你就可以使用 Python 写许多复杂的 CGI 程序。一个 C++ 的 CGI 程序可以与任何其他外部系统（例如：RDBMS）交互，从而来进行信息的交换。
 
 ## HTTP 报头
 
-**Content-type:text/html\r\n\r\n** 是发送到浏览器的 HTTP 报头的一部分，它用来帮助浏览器解析文本内容。下面的表格展示了 HTTP 报头
+`Content-type:text/html\r\n\r\n` 是发送到浏览器的 HTTP 报头的一部分，它用来帮助浏览器解析文本内容。下面的表格展示了 HTTP 报头
 
 ```
     HTTP Field Name: Field Content
@@ -204,9 +206,9 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 下面是一个使用 GET 方法传递两个值到 hello_get.py 程序的简单 URL。
 
-**/cgi-bin/cpp_get.cgi?first_name=ZARA&last_name=ALI**
+`/cgi-bin/cpp_get.cgi?first_name=ZARA&last_name=ALI`
 
-下面是一个生成 **cpp_get.cgi** CGI 程序的程序，它会处理来自 Web 浏览器的输入。我们使用了 C++ CGI 库，这使得它非常容易访问传递的信息：
+下面是一个生成 `cpp_get.cgi` CGI 程序的程序，它会处理来自 Web 浏览器的输入。我们使用了 C++ CGI 库，这使得它非常容易访问传递的信息：
 
 ```
     #include <iostream>
@@ -264,7 +266,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 它将会产生 cpp_get.cgi，并把它放在你的 CGI 目录，并尝试使用下面的链接访问：
 
-**/cgi-bin/cpp_get.cgi?first_name=ZARA&last_name=ALI**
+`/cgi-bin/cpp_get.cgi?first_name=ZARA&last_name=ALI`
 
 这将会产生如下的结果：
 
@@ -556,11 +558,11 @@ HTTP 协议是一个无状态协议。但是对于一个商业网站，它需要
 
 Cookies 是一个记录了5可变长度字段的纯文本数据：
 
-- **Expires**：cookie 将失效的日期。 如果此字段为空，那么当访问者退出浏览器后 cookie 将会失效。
-- **Domain** ：网站的域名。
-- **Path** ：设置 cookie 的目录或网页的路径。如果你想要从任何目录或页面检索 cookie ，此字段将设置为空。
-- **Secure** ：如果该字段包含单词 "secure"，那么该 cookie 仅可由一个安全的服务器检索到。如果该字段为空，将不存在这样的限制。
-- **Name=Value**：cookie 将以键值对的形式设置和检索。
+- `Expires`：cookie 将失效的日期。 如果此字段为空，那么当访问者退出浏览器后 cookie 将会失效。
+- `Domain` ：网站的域名。
+- `Path` ：设置 cookie 的目录或网页的路径。如果你想要从任何目录或页面检索 cookie ，此字段将设置为空。
+- `Secure` ：如果该字段包含单词 "secure"，那么该 cookie 仅可由一个安全的服务器检索到。如果该字段为空，将不存在这样的限制。
+- `Name=Value`：cookie 将以键值对的形式设置和检索。
 
 ## 设置 Cookies
 
@@ -595,13 +597,13 @@ Cookies 是一个记录了5可变长度字段的纯文本数据：
     }
 ```
 
-从这个例子中，你一定要了解如何设置 cookie。 我们使用 HTTP 报头的 **Set-Cookie** 字段设置 cookie。
+从这个例子中，你一定要了解如何设置 cookie。 我们使用 HTTP 报头的 `Set-Cookie` 字段设置 cookie。
 
-cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得注意的是，cookies 设置在魔力代码行 **Content-type:text/html\r\n\r\n** 之前。
+cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得注意的是，cookies 设置在魔力代码行 `Content-type:text/html\r\n\r\n` 之前。
 
 编译上面的程序将产生 setcookies.cgi，并尝试使用下面的链接来设置 cookie。它会在你的电脑上设置四个 cookie：
 
-**/cgi-bin/setcookies.cgi**
+`/cgi-bin/setcookies.cgi`
 
 ## 检索 Cookie
 
@@ -664,7 +666,7 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 
 现在，编译上面的程序将产生 getcookies.cgi，并且试图列出你电脑上所有可用的 cookies：
 
-**/cgi-bin/getcookies.cgi**
+`/cgi-bin/getcookies.cgi`
 
 这将会列出在上一节设置的四个 cookies 和其它你电脑上设置的 cookies。
 
@@ -677,7 +679,7 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 
 ## 文件上传
 
-要上传一个文件，HTML 表单必须将 enctype 属性设置为 **multipart/form-data**。 type 为 file 的 input 标签将会产生一个“选择文件”按钮。
+要上传一个文件，HTML 表单必须将 enctype 属性设置为 `multipart/form-data`。 type 为 file 的 input 标签将会产生一个“选择文件”按钮。
 
 ```
     <html>
@@ -694,7 +696,7 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 
 **注意：**对上面的例子，我们已经禁止了向我们的服务器上传文件。但是你可以在你自己的服务上实验以上的代码。
 
-下面是一个用来处理文件上传的脚本 **cpp_uploadfile.cpp** ：
+下面是一个用来处理文件上传的脚本 `cpp_uploadfile.cpp` ：
 
 ```
     #include <iostream>
@@ -738,4 +740,4 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
     }
 ```
 
-上面的例子是在 **cout** 流中写内容，但是你可以打开你的文件流，并将上传文件的内容保存到一个预定位置的文件中。
+上面的例子是在 `cout` 流中写内容，但是你可以打开你的文件流，并将上传文件的内容保存到一个预定位置的文件中。
