@@ -126,16 +126,16 @@
     #include <stdlib.h>
     using namespace std;
 
-    const string ENV[ 24 ] = { 
-    "COMSPEC", "DOCUMENT_ROOT", "GATEWAY_INTERFACE",   
-    "HTTP_ACCEPT", "HTTP_ACCEPT_ENCODING", 
-    "HTTP_ACCEPT_LANGUAGE", "HTTP_CONNECTION", 
+    const string ENV[ 24 ] = {
+    "COMSPEC", "DOCUMENT_ROOT", "GATEWAY_INTERFACE",
+    "HTTP_ACCEPT", "HTTP_ACCEPT_ENCODING",
+    "HTTP_ACCEPT_LANGUAGE", "HTTP_CONNECTION",
     "HTTP_HOST", "HTTP_USER_AGENT", "PATH",
-    "QUERY_STRING", "REMOTE_ADDR", "REMOTE_PORT",  
+    "QUERY_STRING", "REMOTE_ADDR", "REMOTE_PORT",
     "REQUEST_METHOD", "REQUEST_URI", "SCRIPT_FILENAME",
-    "SCRIPT_NAME", "SERVER_ADDR", "SERVER_ADMIN",  
-    "SERVER_NAME","SERVER_PORT","SERVER_PROTOCOL", 
-    "SERVER_SIGNATURE","SERVER_SOFTWARE" };   
+    "SCRIPT_NAME", "SERVER_ADDR", "SERVER_ADMIN",
+    "SERVER_NAME","SERVER_PORT","SERVER_PROTOCOL",
+    "SERVER_SIGNATURE","SERVER_SOFTWARE" };
 
     int main ()
     {
@@ -152,9 +152,9 @@
        {
        cout << "<tr><td>" << ENV[ i ] << "</td><td>";
        // attempt to retrieve value of environment variable
-       char *value = getenv( ENV[ i ].c_str() );  
+       char *value = getenv( ENV[ i ].c_str() );
        if ( value != 0 ){
-     cout << value; 
+     cout << value;
        }else{
      cout << "Environment variable does not exist.";
        }
@@ -173,9 +173,9 @@
 对于真正的应用来说，你需要你的CGI程序来完成许多操作。现在有一个用 C++ 编写的 CGI 程序库，你可以从 <ftp://ftp.gnu.org/gnu/cgicc/> 下载并按照以下步骤来安装此库：
 
 ```
-    $tar xzf cgicc-X.X.X.tar.gz 
-    $cd cgicc-X.X.X/ 
-    $./configure --prefix=/usr 
+    $tar xzf cgicc-X.X.X.tar.gz
+    $cd cgicc-X.X.X/
+    $./configure --prefix=/usr
     $make
     $make install
 ```
@@ -210,15 +210,15 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 ```
     #include <iostream>
-    #include <vector>  
-    #include <string>  
-    #include <stdio.h>  
-    #include <stdlib.h> 
+    #include <vector>
+    #include <string>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #include <cgicc/CgiDefs.h> 
-    #include <cgicc/Cgicc.h> 
-    #include <cgicc/HTTPHTMLHeader.h> 
-    #include <cgicc/HTMLClasses.h>  
+    #include <cgicc/CgiDefs.h>
+    #include <cgicc/Cgicc.h>
+    #include <cgicc/HTTPHTMLHeader.h>
+    #include <cgicc/HTMLClasses.h>
 
     using namespace std;
     using namespace cgicc;
@@ -234,18 +234,18 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "</head>\n";
        cout << "<body>\n";
 
-       form_iterator fi = formData.getElement("first_name");  
-       if( !fi->isEmpty() && fi != (*formData).end()) {  
-      cout << "First name: " << **fi << endl;  
+       form_iterator fi = formData.getElement("first_name");
+       if( !fi->isEmpty() && fi != (*formData).end()) {
+      cout << "First name: " << **fi << endl;
        }else{
-      cout << "No text entered for first name" << endl;  
+      cout << "No text entered for first name" << endl;
        }
        cout << "<br/>\n";
-       fi = formData.getElement("last_name");  
-       if( !fi->isEmpty() &&fi != (*formData).end()) {  
-      cout << "Last name: " << **fi << endl;  
+       fi = formData.getElement("last_name");
+       if( !fi->isEmpty() &&fi != (*formData).end()) {
+      cout << "Last name: " << **fi << endl;
        }else{
-      cout << "No text entered for last name" << endl;  
+      cout << "No text entered for last name" << endl;
        }
        cout << "<br/>\n";
 
@@ -269,8 +269,8 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 这将会产生如下的结果：
 
 ```
-    First name: ZARA 
-    Last name: ALI 
+    First name: ZARA
+    Last name: ALI
 ```
 
 ## 简单的 FORM 例子： GET 方法
@@ -308,8 +308,8 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 下面是一个有两个复选框的 HTML 表单样例代码。
 
 ```
-    <form action="/cgi-bin/cpp_checkbox.cgi" 
-     method="POST" 
+    <form action="/cgi-bin/cpp_checkbox.cgi"
+     method="POST"
      target="_blank">
     <input type="checkbox" name="maths" value="on" /> Maths
     <input type="checkbox" name="physics" value="on" /> Physics
@@ -321,15 +321,15 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 ```
     #include <iostream>
-    #include <vector>  
-    #include <string>  
-    #include <stdio.h>  
-    #include <stdlib.h> 
+    #include <vector>
+    #include <string>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #include <cgicc/CgiDefs.h> 
-    #include <cgicc/Cgicc.h> 
-    #include <cgicc/HTTPHTMLHeader.h> 
-    #include <cgicc/HTMLClasses.h> 
+    #include <cgicc/CgiDefs.h>
+    #include <cgicc/Cgicc.h>
+    #include <cgicc/HTTPHTMLHeader.h>
+    #include <cgicc/HTMLClasses.h>
 
     using namespace std;
     using namespace cgicc;
@@ -347,18 +347,18 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "<body>\n";
 
        maths_flag = formData.queryCheckbox("maths");
-       if( maths_flag ) {  
-      cout << "Maths Flag: ON " << endl;  
+       if( maths_flag ) {
+      cout << "Maths Flag: ON " << endl;
        }else{
-      cout << "Maths Flag: OFF " << endl;  
+      cout << "Maths Flag: OFF " << endl;
        }
        cout << "<br/>\n";
 
        physics_flag = formData.queryCheckbox("physics");
-       if( physics_flag ) {  
-      cout << "Physics Flag: ON " << endl;  
+       if( physics_flag ) {
+      cout << "Physics Flag: ON " << endl;
        }else{
-      cout << "Physics Flag: OFF " << endl;  
+      cout << "Physics Flag: OFF " << endl;
        }
        cout << "<br/>\n";
        cout << "</body>\n";
@@ -375,11 +375,11 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 下面是一个有两个单选按钮的 HTML 表单样例代码。
 
 ```
-    <form action="/cgi-bin/cpp_radiobutton.cgi" 
-     method="post" 
+    <form action="/cgi-bin/cpp_radiobutton.cgi"
+     method="post"
      target="_blank">
-    <input type="radio" name="subject" value="maths" 
-    checked="checked"/> Maths 
+    <input type="radio" name="subject" value="maths"
+    checked="checked"/> Maths
     <input type="radio" name="subject" value="physics" /> Physics
     <input type="submit" value="Select Subject" />
     </form>
@@ -389,15 +389,15 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 ```
     #include <iostream>
-    #include <vector>  
-    #include <string>  
-    #include <stdio.h>  
-    #include <stdlib.h> 
+    #include <vector>
+    #include <string>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #include <cgicc/CgiDefs.h> 
-    #include <cgicc/Cgicc.h> 
-    #include <cgicc/HTTPHTMLHeader.h> 
-    #include <cgicc/HTMLClasses.h> 
+    #include <cgicc/CgiDefs.h>
+    #include <cgicc/Cgicc.h>
+    #include <cgicc/HTTPHTMLHeader.h>
+    #include <cgicc/HTMLClasses.h>
 
     using namespace std;
     using namespace cgicc;
@@ -413,9 +413,9 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "</head>\n";
        cout << "<body>\n";
 
-       form_iterator fi = formData.getElement("subject");  
-       if( !fi->isEmpty() && fi != (*formData).end()) {  
-      cout << "Radio box selected: " << **fi << endl;  
+       form_iterator fi = formData.getElement("subject");
+       if( !fi->isEmpty() && fi != (*formData).end()) {
+      cout << "Radio box selected: " << **fi << endl;
        }
 
        cout << "<br/>\n";
@@ -433,8 +433,8 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 下面是一个有文本域框的 HTML 表单样例代码。
 
 ```
-    <form action="/cgi-bin/cpp_textarea.cgi" 
-     method="post" 
+    <form action="/cgi-bin/cpp_textarea.cgi"
+     method="post"
      target="_blank">
     <textarea name="textcontent" cols="40" rows="4">
     Type your text here...
@@ -447,15 +447,15 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 ```
     #include <iostream>
-    #include <vector>  
-    #include <string>  
-    #include <stdio.h>  
-    #include <stdlib.h> 
+    #include <vector>
+    #include <string>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #include <cgicc/CgiDefs.h> 
-    #include <cgicc/Cgicc.h> 
-    #include <cgicc/HTTPHTMLHeader.h> 
-    #include <cgicc/HTMLClasses.h> 
+    #include <cgicc/CgiDefs.h>
+    #include <cgicc/Cgicc.h>
+    #include <cgicc/HTTPHTMLHeader.h>
+    #include <cgicc/HTMLClasses.h>
 
     using namespace std;
     using namespace cgicc;
@@ -471,11 +471,11 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "</head>\n";
        cout << "<body>\n";
 
-       form_iterator fi = formData.getElement("textcontent");  
-       if( !fi->isEmpty() && fi != (*formData).end()) {  
-      cout << "Text Content: " << **fi << endl;  
+       form_iterator fi = formData.getElement("textcontent");
+       if( !fi->isEmpty() && fi != (*formData).end()) {
+      cout << "Text Content: " << **fi << endl;
        }else{
-      cout << "No text entered" << endl;  
+      cout << "No text entered" << endl;
        }
 
        cout << "<br/>\n";
@@ -493,7 +493,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 下面是一个有一个下拉框的 HTML 表单样例代码。
 
 ```
-    <form action="/cgi-bin/cpp_dropdown.cgi" 
+    <form action="/cgi-bin/cpp_dropdown.cgi"
        method="post" target="_blank">
     <select name="dropdown">
     <option value="Maths" selected>Maths</option>
@@ -507,15 +507,15 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 ```
     #include <iostream>
-    #include <vector>  
-    #include <string>  
-    #include <stdio.h>  
-    #include <stdlib.h> 
+    #include <vector>
+    #include <string>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #include <cgicc/CgiDefs.h> 
-    #include <cgicc/Cgicc.h> 
-    #include <cgicc/HTTPHTMLHeader.h> 
-    #include <cgicc/HTMLClasses.h> 
+    #include <cgicc/CgiDefs.h>
+    #include <cgicc/Cgicc.h>
+    #include <cgicc/HTTPHTMLHeader.h>
+    #include <cgicc/HTMLClasses.h>
 
     using namespace std;
     using namespace cgicc;
@@ -531,9 +531,9 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "</head>\n";
        cout << "<body>\n";
 
-       form_iterator fi = formData.getElement("dropdown");  
-       if( !fi->isEmpty() && fi != (*formData).end()) {  
-      cout << "Value Selected: " << **fi << endl;  
+       form_iterator fi = formData.getElement("dropdown");
+       if( !fi->isEmpty() && fi != (*formData).end()) {
+      cout << "Value Selected: " << **fi << endl;
        }
 
        cout << "<br/>\n";
@@ -585,7 +585,7 @@ Cookies 是一个记录了5可变长度字段的纯文本数据：
        cout << "</head>\n";
        cout << "<body>\n";
 
-       cout << "Setting cookies" << endl;  
+       cout << "Setting cookies" << endl;
 
        cout << "<br/>\n";
        cout << "</body>\n";
@@ -615,14 +615,14 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 
 ```
     #include <iostream>
-    #include <vector>  
-    #include <string>  
-    #include <stdio.h>  
-    #include <stdlib.h> 
+    #include <vector>
+    #include <string>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #include <cgicc/CgiDefs.h> 
-    #include <cgicc/Cgicc.h> 
-    #include <cgicc/HTTPHTMLHeader.h> 
+    #include <cgicc/CgiDefs.h>
+    #include <cgicc/Cgicc.h>
+    #include <cgicc/HTTPHTMLHeader.h>
     #include <cgicc/HTMLClasses.h>
 
     using namespace std;
@@ -645,11 +645,11 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
        const CgiEnvironment& env = cgi.getEnvironment();
 
        for( cci = env.getCookieList().begin();
-    cci != env.getCookieList().end(); 
+    cci != env.getCookieList().end();
     ++cci )
        {
       cout << "<tr><td>" << cci->getName() << "</td><td>";
-      cout << cci->getValue(); 
+      cout << cci->getValue();
       cout << "</td></tr>\n";
        }
        cout << "</table><\n";
@@ -669,9 +669,9 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 这将会列出在上一节设置的四个 cookies 和其它你电脑上设置的 cookies。
 
 ```
-    UserID XYZ 
-    Password XYZ123 
-    Domain www.tutorialspoint.com 
+    UserID XYZ
+    Password XYZ123
+    Domain www.tutorialspoint.com
     Path /perl
 ```
 
@@ -682,8 +682,8 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 ```
     <html>
     <body>
-       <form enctype="multipart/form-data" 
-    action="/cgi-bin/cpp_uploadfile.cgi" 
+       <form enctype="multipart/form-data"
+    action="/cgi-bin/cpp_uploadfile.cgi"
     method="post">
        <p>File: <input type="file" name="userfile" /></p>
        <p><input type="submit" value="Upload" /></p>
@@ -698,14 +698,14 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 
 ```
     #include <iostream>
-    #include <vector>  
-    #include <string>  
-    #include <stdio.h>  
-    #include <stdlib.h> 
+    #include <vector>
+    #include <string>
+    #include <stdio.h>
+    #include <stdlib.h>
 
-    #include <cgicc/CgiDefs.h> 
-    #include <cgicc/Cgicc.h> 
-    #include <cgicc/HTTPHTMLHeader.h> 
+    #include <cgicc/CgiDefs.h>
+    #include <cgicc/Cgicc.h>
+    #include <cgicc/HTTPHTMLHeader.h>
     #include <cgicc/HTMLClasses.h>
 
     using namespace std;
