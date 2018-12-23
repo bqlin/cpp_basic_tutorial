@@ -50,7 +50,7 @@ Options All
 
 思考下面的 C++ 程序内容:
 
-```c
+```c++
 #include <iostream>
 using namespace std;
 
@@ -140,7 +140,7 @@ Content-type: text/html\r\n\r\n
 
 这里提供一个小 CGI 程序来列出所有的 CGI 变量。点击链接 [Get Environment](http://www.tutorialspoint.com/cgi-bin/cpp_env.cgi) 来查看结果。
 
-```c
+```c++
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
@@ -225,7 +225,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
 
 下面是一个生成 `cpp_get.cgi` CGI 程序的程序，它会处理来自 Web 浏览器的输入。我们使用了 C++ CGI 库，这使得它非常容易访问传递的信息：
 
-```c
+```c++
 #include <iostream>
 #include <vector>
 #include <string>
@@ -336,7 +336,7 @@ Last Name: <input type="text" name="last_name" />
 
 下面 C++ 程序会产生 cpp_checkbox.cgi 脚本来处理由 Web 浏览器提供的复选框按钮的输入。
 
-```c
+```c++
 #include <iostream>
 #include <vector>
 #include <string>
@@ -404,7 +404,7 @@ checked="checked"/> Maths
 
 下面的 C++ 程序会产生 cpp_checkbox.cgi 脚本来处理由 Web 浏览器提供的单选按钮的输入。
 
-```c
+```c++
 #include <iostream>
 #include <vector>
 #include <string>
@@ -462,7 +462,7 @@ Type your text here...
 
 下面的 C++ 程序会产生 cpp_checkbox.cgi 脚本来处理由 Web 浏览器提供的文本域的输入。
 
-```c
+```c++
 #include <iostream>
 #include <vector>
 #include <string>
@@ -522,7 +522,7 @@ int main ()
 
 下面的 C++ 程序会产生 cpp_checkbox.cgi 脚本来处理由 Web 浏览器提供的下拉框的输入。
 
-```c
+```c++
 #include <iostream>
 #include <vector>
 #include <string>
@@ -583,7 +583,7 @@ Cookies 是一个记录了5可变长度字段的纯文本数据：
 
 将 cookies 发送到浏览器是非常容易的。这些 cookie 会设置在 HTTP报头的 Content-type 字段之前，并与其一起发送出去。假设你要将 UserID 和 Password 设置为 cookie。cookie 的设置如下所示
 
-```c
+```c++
 #include <iostream>
 using namespace std;
 
@@ -628,7 +628,7 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
 
 下面是一个如何检索 cookie 的例子。
 
-```c
+```c++
 #include <iostream>
 #include <vector>
 #include <string>
@@ -711,7 +711,7 @@ method="post">
 
 下面是一个用来处理文件上传的脚本 `cpp_uploadfile.cpp` ：
 
-```c
+```c++
 #include <iostream>
 #include <vector>
 #include <string>
