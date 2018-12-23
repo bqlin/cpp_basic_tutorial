@@ -27,7 +27,7 @@
 
 ## Web 服务器配置
 
-在你进行 CGI 编程之前确保您的 Web 服务器支持 CGI，并且它被配置为能够处理 CGI 程序。 HTTP 服务器执行的所有 CGI 程序被保存在一个预先配置的目录里。这个目录称为 CGI 目录，一般其命名为 /var/www/cgi-bin。尽管 CGI 文件是 C++ 可执行的，但是按照惯例他们会有扩展名 **.cgi**.
+在你进行 CGI 编程之前确保您的 Web 服务器支持 CGI，并且它被配置为能够处理 CGI 程序。 HTTP 服务器执行的所有 CGI 程序被保存在一个预先配置的目录里。这个目录称为 CGI 目录，一般其命名为 /var/www/cgi-bin。尽管 CGI 文件是 C++ 可执行的，但是按照惯例他们会有扩展名 **.cgi**。
 
 默认情况下，Apache Web 服务器配置为在`/var/www/cgi-bin`运行 CGI 程序。如果你想指定其他目录运行 CGI 脚本，你可以在 httpd.conf 配置文件中修改下面部分的内容:
 
@@ -71,11 +71,11 @@
     }
 ```
 
-编译上面的代码，并命名可执行文件为 cplusplus.cgi. 该文件被保存在`/var/WWW/cgi-bin`目录里，并且它有上面的内容。在运行 CGI 程序之前，请确保你已使用 **chmod755 cplusplus.cgi** UNIX 命令来改变文件的权限，使文件能够可执行。现在，如果你点击 [cplusplus.cgi](http://www.tutorialspoint.com/cgi-bin/cplusplus.cgi) ，那么这将产生以下的输出：
+编译上面的代码，并命名可执行文件为 cplusplus.cgi。该文件被保存在`/var/WWW/cgi-bin`目录里，并且它有上面的内容。在运行 CGI 程序之前，请确保你已使用 **chmod755 cplusplus.cgi** UNIX 命令来改变文件的权限，使文件能够可执行。现在，如果你点击 [cplusplus.cgi](http://www.tutorialspoint.com/cgi-bin/cplusplus.cgi) ，那么这将产生以下的输出：
 
 **Hello World! This is my first CGI program**
 
-以上的 C++ 程序是一个简单的将输出写入 STDOUT 文件（即屏幕）的程序。它有一个可用的重要和额外的功能是，第一行要输出 **Content-type:text/html\r\n\r\n**. 这一行被发送回浏览器，并指定在浏览器屏幕上显示出来的内容类型。 现在，你理解了 CGI 的基本概念，然后你就可以使用 Python 写许多复杂的 CGI 程序。一个 C++ 的 CGI 程序可以与任何其他外部系统(例如 RDBMS )交互，从而来进行信息的交换。
+以上的 C++ 程序是一个简单的将输出写入 STDOUT 文件（即屏幕）的程序。它有一个可用的重要和额外的功能是，第一行要输出 **Content-type:text/html\r\n\r\n**。这一行被发送回浏览器，并指定在浏览器屏幕上显示出来的内容类型。 现在，你理解了 CGI 的基本概念，然后你就可以使用 Python 写许多复杂的 CGI 程序。一个 C++ 的 CGI 程序可以与任何其他外部系统(例如 RDBMS )交互，从而来进行信息的交换。
 
 ## HTTP 报头
 
@@ -93,8 +93,8 @@
 | 报头                | 描述                                                         |
 | ------------------- | ------------------------------------------------------------ |
 | Content-type:       | 一个MIME字符串格式的文件会被返回。例如：Content-type:text/htm |
-| Expires: Date       | Date：页面信息失效的日期。这运行在浏览器端，由浏览器决定何时需要刷新页面。一个有效的日期字符串格式应该是这样的： 01 Jan 1998 12:00:00 GMT. |
-| Location: URL       | 这里的 URL 是应当返回的 URL，而不是请求的 URL.你可以使用此来重定向一个请求到任何文件。 |
+| Expires: Date       | Date：页面信息失效的日期。这运行在浏览器端，由浏览器决定何时需要刷新页面。一个有效的日期字符串格式应该是这样的： 01 Jan 1998 12:00:00 GMT。|
+| Location: URL       | 这里的 URL 是应当返回的 URL，而不是请求的 URL。你可以使用此来重定向一个请求到任何文件。 |
 | Last-modified: Date | 资源最近修改的日期。                                         |
 | Content-length: N   | 返回数据的长度，以字节为单位存储。浏览器使用这个值来预估计文件的下载时间。 |
 | Set-Cookie: String  | 通过字符串 string 设置 cookie                                |
@@ -113,7 +113,7 @@
 | QUERY_STRING    | 与发送 GET 请求一同发送的 URL 编码信息。                     |
 | REMOTE_ADDR     | 发出请求的远程主机的 IP 地址。这可用于记录日志或认证。       |
 | REMOTE_HOST     | 发出请求的主机的完全资格名称。如果该信息不可用，则REMOTE_ADDR 可用于获取 IR 地址。 |
-| REQUEST_METHOD  | 用于请求的方法。最常用的方法是 GET 和 POST.                  |
+| REQUEST_METHOD  | 用于请求的方法。最常用的方法是 GET 和 POST。                  |
 | SCRIPT_FILENAME | CGI 脚本的完全路径。                                         |
 | SCRIPT_NAME     | CGI 脚本的名称。                                             |
 | SERVER_NAME     | 服务器的主机名或是 IP 地址。                                 |
@@ -552,7 +552,7 @@ HTTP 协议是一个无状态协议。但是对于一个商业网站，它需要
 
 ## 它是如何工作的
 
-你的服务器发送一些 cookie 格式的数据给访问者的浏览器。该浏览器可能接受了该 cookie. 如果是这样，它以纯文本的方式记录在访问者的硬盘驱动器上。现在，当访问者访问你的网站上的其他页面时，该 cookie 可用于检索。一旦检索到，你的服务器就会知道/记起已存储的信息。
+你的服务器发送一些 cookie 格式的数据给访问者的浏览器。该浏览器可能接受了该 cookie。如果是这样，它以纯文本的方式记录在访问者的硬盘驱动器上。现在，当访问者访问你的网站上的其他页面时，该 cookie 可用于检索。一旦检索到，你的服务器就会知道/记起已存储的信息。
 
 Cookies 是一个记录了5可变长度字段的纯文本数据：
 
@@ -564,7 +564,7 @@ Cookies 是一个记录了5可变长度字段的纯文本数据：
 
 ## 设置 Cookies
 
-将 cookies 发送到浏览器是非常容易的。这些 cookie 会设置在 HTTP报头的 Content-type 字段之前，并与其一起发送出去。假设你要将 UserID 和 Password 设置为 cookie. cookie 的设置如下所示
+将 cookies 发送到浏览器是非常容易的。这些 cookie 会设置在 HTTP报头的 Content-type 字段之前，并与其一起发送出去。假设你要将 UserID 和 Password 设置为 cookie。cookie 的设置如下所示
 
 ```
     #include <iostream>
