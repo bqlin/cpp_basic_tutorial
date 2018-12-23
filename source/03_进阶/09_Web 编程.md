@@ -75,7 +75,7 @@
 
 **Hello World! This is my first CGI program**
 
-以上的 C++ 程序是一个简单的将输出写入 STDOUT 文件（即屏幕）的程序。它有一个可用的重要和额外的功能是，第一行要输出 **Content-type:text/html\r\n\r\n**。这一行被发送回浏览器，并指定在浏览器屏幕上显示出来的内容类型。 现在，你理解了 CGI 的基本概念，然后你就可以使用 Python 写许多复杂的 CGI 程序。一个 C++ 的 CGI 程序可以与任何其他外部系统(例如 RDBMS )交互，从而来进行信息的交换。
+以上的 C++ 程序是一个简单的将输出写入 STDOUT 文件（即屏幕）的程序。它有一个可用的重要和额外的功能是，第一行要输出 **Content-type:text/html\r\n\r\n**。这一行被发送回浏览器，并指定在浏览器屏幕上显示出来的内容类型。 现在，你理解了 CGI 的基本概念，然后你就可以使用 Python 写许多复杂的 CGI 程序。一个 C++ 的 CGI 程序可以与任何其他外部系统（例如：RDBMS）交互，从而来进行信息的交换。
 
 ## HTTP 报头
 
@@ -148,12 +148,12 @@
        cout << "<body>\n";
        cout << "<table border = \"0\" cellspacing = \"2\">";
 
-       for ( int i = 0; i < 24; i++ )
+       for (int i = 0; i < 24; i++)
        {
        cout << "<tr><td>" << ENV[ i ] << "</td><td>";
        // attempt to retrieve value of environment variable
-       char *value = getenv( ENV[ i ].c_str() );
-       if ( value != 0 ){
+       char *value = getenv(ENV[i].c_str());
+       if (value != 0){
      cout << value;
        }else{
      cout << "Environment variable does not exist.";
@@ -235,14 +235,14 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "<body>\n";
 
        form_iterator fi = formData.getElement("first_name");
-       if( !fi->isEmpty() && fi != (*formData).end()) {
+       if(!fi->isEmpty() && fi != (*formData).end()) {
       cout << "First name: " << **fi << endl;
        }else{
       cout << "No text entered for first name" << endl;
        }
        cout << "<br/>\n";
        fi = formData.getElement("last_name");
-       if( !fi->isEmpty() &&fi != (*formData).end()) {
+       if(!fi->isEmpty() &&fi != (*formData).end()) {
       cout << "Last name: " << **fi << endl;
        }else{
       cout << "No text entered for last name" << endl;
@@ -347,7 +347,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "<body>\n";
 
        maths_flag = formData.queryCheckbox("maths");
-       if( maths_flag ) {
+       if(maths_flag) {
       cout << "Maths Flag: ON " << endl;
        }else{
       cout << "Maths Flag: OFF " << endl;
@@ -355,7 +355,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "<br/>\n";
 
        physics_flag = formData.queryCheckbox("physics");
-       if( physics_flag ) {
+       if(physics_flag) {
       cout << "Physics Flag: ON " << endl;
        }else{
       cout << "Physics Flag: OFF " << endl;
@@ -414,7 +414,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "<body>\n";
 
        form_iterator fi = formData.getElement("subject");
-       if( !fi->isEmpty() && fi != (*formData).end()) {
+       if(!fi->isEmpty() && fi != (*formData).end()) {
       cout << "Radio box selected: " << **fi << endl;
        }
 
@@ -472,7 +472,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "<body>\n";
 
        form_iterator fi = formData.getElement("textcontent");
-       if( !fi->isEmpty() && fi != (*formData).end()) {
+       if(!fi->isEmpty() && fi != (*formData).end()) {
       cout << "Text Content: " << **fi << endl;
        }else{
       cout << "No text entered" << endl;
@@ -532,7 +532,7 @@ GET 方法是将信息数据从浏览器传递到 Web 服务器的默认方法�
        cout << "<body>\n";
 
        form_iterator fi = formData.getElement("dropdown");
-       if( !fi->isEmpty() && fi != (*formData).end()) {
+       if(!fi->isEmpty() && fi != (*formData).end()) {
       cout << "Value Selected: " << **fi << endl;
        }
 
@@ -644,7 +644,7 @@ cookies 的属性，如 Expires， Domain 和 Path 是可选设置项。值得�
        // get environment variables
        const CgiEnvironment& env = cgi.getEnvironment();
 
-       for( cci = env.getCookieList().begin();
+       for(cci = env.getCookieList().begin();
     cci != env.getCookieList().end();
     ++cci )
        {
